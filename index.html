@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d6efd" >
+
+    <title>deemando | attendance</title>
+
+    <!-- Bootstrap CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Nromal CSS -->
+     <link rel="stylesheet" href="./style.css">
+
+    <!-- manifest json -->
+     <link rel="manifest" href="manifest.json">
+
+</head>
+<body class="bg-light">
+    <div class="container-fluid py-4">
+        <div class="card shadow p-4">
+            <div class="header">
+                <h1 class="text-center text-primary mb-4">Deemando Student Attendance</h1>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">Check In</div>
+                <div class="card-body">
+
+                    <form action="" id="attendance-form" class="row align-items-center g-3">
+                        <div class="col-md-6">
+                            <label for="studentID" class="form-label">Student ID</label>
+                            <input type="text" id="studentID" class="form-control" placeholder="Enter your ID" required>
+                        </div>
+                        
+                        <div class="col-12 text-start">
+                            <button type="submit" class="btn btn-primary">Check In</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="attendancelist" class="attendancelist mb-4">
+                <div class="card-header bg-info text-white">Today's Attendance</div>
+                <div class="card-body">
+                    <table class="table table table-bordered table-hover" id="attendanceTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>#</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Program</th>
+                                <th>Session</th>
+                                <th>Level</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                     
+                </div>
+            </div>
+
+            <div class="mb-3 text-center">
+                <button id="toggleAdmin" class="btn btn-dark">Admin Panel</button>
+            </div>
+
+            <div id="adminPanel" class="card">
+                <div class="card-header bg-light">
+                    <h1 class="text-primary text-center">Admin - Register New Student</h1>
+                </div>
+
+                <div class="card-body">
+                        <form action="" id="admin-form" class="row g-3">
+                            <div class="col-md-6">
+                                <label for="newStudentName" class="form-label">Student Name</label>
+                                <input type="text" id="newStudentName" class="form-control" placeholder="e.g John Doe" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="newStudentID" class="form-label">Student ID</label>
+                                <input type="text" id="newStudentID" class="form-control" placeholder="e.g 2425......" required>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-success">Register Student</button>
+                            </div>
+                        </form>
+                    
+                    <hr>
+                    <h4 class="text-center text-danger">Today's Attendance (Admin View)</h4>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="adminTodayTable">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>#</th>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Program</th>
+                                    <th>Session</th>
+                                    <th>Level</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <div class="text-end mt-2">
+                        <button class="btn btn-outline-primary me-2 mb-4" id="exportToday">Export Todays Record</button>
+                        <button class="btn btn-outline-danger mb-4 me-2" id="deleteToday">Delete Todays Record</button>
+                    </div>
+                    <hr>
+                    <h4 class="text-center text-success">Assign Lecture Key to Session</h4>
+
+                    <form id="keyAssignForm" class="row g-3 mb-3 py-4">
+                        <div class="col-md-6">
+                            <label for="lectureKeySelect" class="form-label">Select Lecture Hall Keys</label>
+                            <select id="lectureKeySelect" class="form-select" required>
+                                <option selected disabled>-- Choose Key --</option>
+                                <option value="C1A">C1A</option>
+                                <option value="C1B">C1B</option>
+                                <option value="C1C">C1C</option>
+                                <option value="C1">C1</option>
+                                <option value="C2">C2</option>
+                                <option value="C3">C3</option>
+                                <option value="C4">C4</option>
+                                <option value="C5">C5</option>
+                                <option value="C6">C6</option>
+                                <option value="C7">C7</option>
+                                <option value="C8">C8</option>
+                                <option value="C9">C9</option>
+                                <option value="C10">C10</option>
+                                <option value="C11">C11</option>
+                                <option value="C12">C12</option>
+                                <option value="C13">C13</option>
+                                <option value="C14">C14</option>
+                                <option value="C15">C15</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="sessionSelect" class="form-label">Assign to Session</label>
+                            <select id="sessionSelect" class="form-select" required>
+                                <option selected disabled>-- Choose Session --</option>
+                                <option value="Group A">Group A</option>
+                                <option value="Group B">Group B</option>
+                                <option value="Group C">Group C</option>
+                                <option value="Group D">Group D</option>
+                                <option value="Group E">Group E (BNSA)</option>
+                                <option value="Group F">Group F</option>
+                                <option value="Evening">Evening</option>
+                                <option value="Weekend">Weekend</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 text-start">
+                            <button type="submit" class="btn btn-success">Assign Key</button>
+                        </div>
+                    </form>
+
+                    <div class="text-start">
+                        <h6 class="text-muted">Current Key Assignments:</h6>
+                        <ul id="keyAssignmentList" class="list-group"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./script.js"></script>
+    
+</body>
+</html>
