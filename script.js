@@ -288,10 +288,6 @@ function loadAttendnace() {
         const row = `<tr>
         <td>${i + 1}</td>
         <td>${r.id}</td>
-        <td>${r.name}</td>
-        <td>${r.program}</td>
-        <td>${r.session}</td>
-        <td>${r.level}</td>
         <td>${r.date}</td>
         <td>${r.time}</td>
         </tr>`;
@@ -437,6 +433,9 @@ function loadAdminTodayAttendance() {
             <td>${index + 1}</td>
             <td>${record.id}</td>
             <td>${record.name}</td>
+            <td>${record.program}</td>
+            <td>${record.session}</td>
+            <td>${record.level}</td>
             <td>${record.date}</td>
             <td>${record.time}</td>
         `;
