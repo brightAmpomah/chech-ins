@@ -437,9 +437,6 @@ function loadAdminTodayAttendance() {
             <td>${index + 1}</td>
             <td>${record.id}</td>
             <td>${record.name}</td>
-            <td>${record.program}</td>
-            <td>${record.session}</td>
-            <td>${record.level}</td>
             <td>${record.date}</td>
             <td>${record.time}</td>
         `;
